@@ -2,9 +2,6 @@
  *  Guillermo Baqueiro, baqueiro@gmail.com
  */
 
-$(document).ready(function() {
-});
-
 /**
  * Compute focal length from 4 points
  * Assuming:
@@ -245,7 +242,7 @@ function sketchProc(pr) {
 
 	// Background Image preload
 	pr.setup = function() {
-		img = pr.loadImage("images/t5.JPG");
+		img = pr.loadImage("Images/t5.JPG");
 	}
 	// Projection matrix
 	var P;
@@ -345,16 +342,22 @@ function calculateAngle(sizeW, distance) {
 }
 
 
-$("#setPyramid").click(function(){
-    var focalLength = $("#focalLength").val();
-    
-    
-    var angle = calculateAngle(800, parseFloat(focalLength));
-   
+$(document).ready(function() {
+
+	$("#setPyramid").click(function(){
+	    var focalLength = $("#focalLength").val();
+	    
+	    
+	    var angle = calculateAngle(800, parseFloat(focalLength));
+	   
+	});
+
+	var canvas = document.getElementById("canvas1");
+	// attaching the sketchProc function to the canvas
+	var p = new Processing(canvas, sketchProc);
+	// p.exit(); to detach it
+
 });
 
-var canvas = document.getElementById("canvas1");
-// attaching the sketchProc function to the canvas
-var p = new Processing(canvas, sketchProc);
-// p.exit(); to detach it
+
 
